@@ -55,7 +55,7 @@ export default function LinksScreen() {
               //To make a button type Social Icon
               title=" website "
               //Title of Social Button
-              type="web"
+              type="wordpress"
               //Type of Social Icon
               onPress={ ()=>{Linking.openURL('https://dal-digitalagency.com')} }
             />
