@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Animated, StyleSheet, Text, View, I18nManager } from 'react-native';
+import { Animated, StyleSheet, Text, View, I18nManager, Platform, Linking } from 'react-native';
 
 import { RectButton } from 'react-native-gesture-handler';
 
@@ -11,6 +11,16 @@ export default class AppleStyleSwipeableRow extends Component {
       inputRange: [0, 50, 100, 101],
       outputRange: [-20, 0, 0, 1],
     });
+    const pressHandler = () => {
+        this.close();
+  
+        let phoneNumber ='tel:${22887300}';
+  
+        if(Platform.O === 'android'){
+            this.phoneNumber = 'tel:${22887300}';
+        }
+        Linking.openURL(phoneNumber);
+      };
     return (
       <RectButton style={styles.leftAction} onPress={this.close}>
         <Animated.Text
@@ -18,8 +28,9 @@ export default class AppleStyleSwipeableRow extends Component {
             styles.actionText,
             {
               transform: [{ translateX: trans }],
-            },
-          ]}>
+            },]}
+            onPress={pressHandler}
+        >
           Archive
         </Animated.Text>
       </RectButton>
@@ -32,7 +43,13 @@ export default class AppleStyleSwipeableRow extends Component {
     });
     const pressHandler = () => {
       this.close();
-      alert(text);
+
+      let phoneNumber ='tel:${22887300}';
+
+      if(Platform.O === 'android'){
+          this.phoneNumber = 'tel:${22887300}';
+      }
+      Linking.openURL(phoneNumber);
     };
     return (
       <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }}>
@@ -40,7 +57,7 @@ export default class AppleStyleSwipeableRow extends Component {
           style={[styles.rightAction, { backgroundColor: color }]}
           onPress={pressHandler}>
           <Text style={styles.actionText}>{text}</Text>
-        </RectButton>
+        </RectButton>        
       </Animated.View>
     );
   };

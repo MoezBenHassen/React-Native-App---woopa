@@ -97,7 +97,7 @@ function handleHelpPress() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "red"
+    backgroundColor: "#2C2F33"
   },
   titleText: {
     fontSize: 26,

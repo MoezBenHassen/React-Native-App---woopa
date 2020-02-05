@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 15,
-    backgroundColor: '#fff',    
+    backgroundColor: '#2c2f33',    
   },
   divider: {
     width:1000,
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     padding: 50,
-    marginLeft:50
+    marginLeft:50,
   },
   content_container: {
     flex: 1,
@@ -123,5 +123,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign:'center',
     paddingBottom: 30,
+    color: '#FFFFFF'
   }
 });

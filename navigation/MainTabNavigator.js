@@ -10,18 +10,20 @@ import SettingsScreen from '../screens/SettingsScreen';
 
 
 const config = Platform.select({
-  web: { headerMode: 'screen' },
+  web: { headerMode: 'float' },
   default: {},
 });
 
 const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
+
   },{
+    headerMode: 'screen',
     defaultNavigationOptions: {
       headerTintColor: '#444',
       headerStyle: {
-        backgroundColor: 'pink'
+        backgroundColor: '#35393e'
       }
     }
   },
@@ -31,12 +33,12 @@ const HomeStack = createStackNavigator(
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
   tabBarOptions: {
-    activeTintColor: "gray", 
-    inactiveTintColor: "white", 
+    activeTintColor: "pink", 
+    inactiveTintColor: "gray", 
     indicatorStyle :{
           backgroundColor:'red'
     },
-    style: {backgroundColor: 'pink'}
+    style: {backgroundColor: '#35393e'}
   },
   tabBarIcon: ({ focused, tintColor }) => (
     <TabBarIcon
@@ -59,12 +61,13 @@ const LinksStack = createStackNavigator(
     },
     
   },{
+    headerMode: 'float',
     defaultNavigationOptions: {
-      activeTintColor: 'white',
-      headerTintColor: '#fff',
+      activeTintColor: '#FFFFFF',
+      headerTintColor: '#FFFFFF',
       headerStyle: {
-        backgroundColor: 'pink'
-      },style: {backgroundColor: 'pink'}
+        backgroundColor: '#35393e'
+      },style: {backgroundColor: '#35393e'}
     }
   },
   
@@ -74,12 +77,12 @@ const LinksStack = createStackNavigator(
 LinksStack.navigationOptions = {
   tabBarLabel: 'Links',
   tabBarOptions: {
-    activeTintColor: "gray", 
-    inactiveTintColor: "white", 
+    activeTintColor: "pink", 
+    inactiveTintColor: "gray", 
     indicatorStyle :{
           backgroundColor:'red'
     },
-    style: {backgroundColor: 'pink'}
+    style: {backgroundColor: '#35393e'}
   },
   tabBarIcon: ({ focused, tintColor}) => (
     <TabBarIcon color = {tintColor} focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
@@ -95,11 +98,13 @@ const SettingsStack = createStackNavigator(
     },
   },
   {
+    headerMode: 'float',
     defaultNavigationOptions: {
-      headerTintColor: '#fff',
+      title: 'Settings',
+      headerTintColor: '#FFFFFF',
       headerStyle: {
-        backgroundColor: 'pink'
-      },style: {backgroundColor: 'pink'}
+        backgroundColor: '#35393e'
+      },style: {backgroundColor: '#35393e'}
     }
   },
   config
@@ -109,16 +114,16 @@ SettingsStack.navigationOptions = {
   tabBarLabel: 'Settings',
   
   headerStyle:{
-    backgroundColor: 'pink',
-    headerTintColor: '#fff'
+    backgroundColor: '#35393e',
+    headerTintColor: '#FFFFFF'
   },
   tabBarOptions: {
-    activeTintColor: "gray", 
-    inactiveTintColor: "white", 
+    activeTintColor: "pink", 
+    inactiveTintColor: "gray", 
     indicatorStyle :{
           backgroundColor:'red'
     },
-    style: {backgroundColor: 'pink'}
+    style: {backgroundColor: '#35393e'}
   },
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />

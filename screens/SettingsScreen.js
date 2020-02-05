@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity,Animated } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity,Animated, Dimensions } from "react-native";
 
 import { GestureHandler } from "expo";
 import { ListItem, List } from "react-native-elements";
@@ -20,7 +20,7 @@ const Row = ({ item }) => (
       {item.message}
     </Text>
     <Text style={styles.dateText}>
-      {item.when} {'❭'}
+       {'❭'}
     </Text>
   </RectButton>
 );
@@ -28,7 +28,7 @@ const Row = ({ item }) => (
 const SwipeableRow = ({ item, index }) => {
   
     return (
-      <AppleStyleSwipeableRow>
+      <AppleStyleSwipeableRow >
         <Row item={item} />
       </AppleStyleSwipeableRow>
     );
@@ -45,15 +45,18 @@ const SwipeableRow = ({ item, index }) => {
 export default class Example extends Component {
   render() {
     return (
+      <View style={{ flex: 1 }}>
       <FlatList
         data={DATA}
+        style= {{flex:1}}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
         renderItem={({ item, index }) => (
-          <SwipeableRow 
+          <SwipeableRow  
             item={item} index={index} />
         )}
         keyExtractor={(item, index) => `message ${index}`}
       />
+      </View>
     );
   }
 }
@@ -61,20 +64,20 @@ export default class Example extends Component {
 const styles = StyleSheet.create({
   rectButton: {
     flex: 1,
-    height: 80,
     paddingVertical: 10,
     paddingHorizontal: 20,
     justifyContent: 'space-between',
     flexDirection: 'column',
-    backgroundColor: 'white',
+    backgroundColor: '#2C2F33',
   },
   separator: {
-    backgroundColor: 'rgb(200, 199, 204)',
+    backgroundColor: '#99AAB5',
     height: StyleSheet.hairlineWidth,
   },
   fromText: {
     fontWeight: 'bold',
     backgroundColor: 'transparent',
+    color: '#FFFFFF'
   },
   messageText: {
     color: '#999',
@@ -85,7 +88,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 20,
     top: 10,
-    color: '#999',
+    color: 'pink', //'#7289DA',
     fontWeight: 'bold',
   },
 });
@@ -108,7 +111,7 @@ const DATA = [
     when: '6:06 AM',
     message:
       'Sed non arcu ullamcorper, eleifend velit eu, tristique metus. Duis id sapien eu orci varius malesuada et ac ipsum. Ut a magna vel urna tristique sagittis et dapibus augue. Vivamus non mauris a turpis auctor sagittis vitae vel ex. Curabitur accumsan quis mauris quis venenatis.',
-  },
+  }/*,
   {
     from: 'Porthos',
     when: 'Yesterday',
@@ -138,5 +141,5 @@ const DATA = [
     when: '2 weeks ago',
     message:
       'Vestibulum ac nisi non augue viverra ullamcorper quis vitae mi. Donec vitae risus aliquam, posuere urna fermentum, fermentum risus. ',
-  },
+  },*/
 ];
