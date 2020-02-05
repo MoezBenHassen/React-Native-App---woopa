@@ -111,7 +111,7 @@ const SettingsStack = createStackNavigator(
 );
 
 SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+  tabBarLabel: 'Contact',
   
   headerStyle:{
     backgroundColor: '#35393e',
@@ -126,7 +126,7 @@ SettingsStack.navigationOptions = {
     style: {backgroundColor: '#35393e'}
   },
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-contact' : 'md-contact'} />
   ),
 };
 

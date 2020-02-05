@@ -45,10 +45,10 @@ const SwipeableRow = ({ item, index }) => {
 export default class Example extends Component {
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1}}>
       <FlatList
+        style= {{flex: 1, flexGrow: 1}}
         data={DATA}
-        style= {{flex:1}}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
         renderItem={({ item, index }) => (
           <SwipeableRow  
@@ -64,7 +64,7 @@ export default class Example extends Component {
 const styles = StyleSheet.create({
   rectButton: {
     flex: 1,
-    paddingVertical: 10,
+    paddingVertical: '23%',
     paddingHorizontal: 20,
     justifyContent: 'space-between',
     flexDirection: 'column',

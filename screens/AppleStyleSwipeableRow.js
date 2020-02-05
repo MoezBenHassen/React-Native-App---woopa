@@ -4,6 +4,7 @@ import { Animated, StyleSheet, Text, View, I18nManager, Platform, Linking } from
 import { RectButton } from 'react-native-gesture-handler';
 
 import Swipeable from 'react-native-gesture-handler/Swipeable';
+import Communications from 'react-native-communications'
 
 export default class AppleStyleSwipeableRow extends Component {
   renderLeftActions = (progress, dragX) => {
@@ -11,6 +12,7 @@ export default class AppleStyleSwipeableRow extends Component {
       inputRange: [0, 50, 100, 101],
       outputRange: [-20, 0, 0, 1],
     });
+    /* REPLACED WITH THE Communications LIBRARY 
     const pressHandler = () => {
         this.close();
   
@@ -21,6 +23,7 @@ export default class AppleStyleSwipeableRow extends Component {
         }
         Linking.openURL(phoneNumber);
       };
+      */
     return (
       <RectButton style={styles.leftAction} onPress={this.close}>
         <Animated.Text
@@ -29,18 +32,25 @@ export default class AppleStyleSwipeableRow extends Component {
             {
               transform: [{ translateX: trans }],
             },]}
-            onPress={pressHandler}
+            onPress={() => Communications.phonecall('22887300', true)}
         >
-          Archive
+          Call
         </Animated.Text>
       </RectButton>
     );
   };
+
+  //Right action for Action
   renderRightAction = (text, color, x, progress) => {
     const trans = progress.interpolate({
       inputRange: [0, 1],
       outputRange: [x, 0],
     });
+    const pressHandler = () => {
+        this.close()
+        alert('action');
+    }
+    /* REPLACED WITH THE Communication library
     const pressHandler = () => {
       this.close();
 
@@ -50,12 +60,46 @@ export default class AppleStyleSwipeableRow extends Component {
           this.phoneNumber = 'tel:${22887300}';
       }
       Linking.openURL(phoneNumber);
-    };
+    };*/ 
     return (
       <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }}>
         <RectButton
-          style={[styles.rightAction, { backgroundColor: color }]}
+          style={[styles.rightAction, { backgroundColor: color}]}
           onPress={pressHandler}>
+          <Text style={styles.actionText}>{text}</Text>
+        </RectButton>        
+      </Animated.View>
+    );
+  };
+
+  //Right action for TEXTING BUTTON
+  renderRightActionTexting = (text, color, x, progress) => {
+    const trans = progress.interpolate({
+      inputRange: [0, 1],
+      outputRange: [x, 0],
+    }); 
+    return (
+      <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }}>
+        <RectButton
+          style={[styles.rightAction, { backgroundColor: color}]}
+          onPress={() => Communications.text ('22887300')}>
+          <Text style={styles.actionText}>{text}</Text>
+        </RectButton>        
+      </Animated.View>
+    );
+  };
+  
+  //Right action for MAILING BUTTON
+  renderRightActionMailing = (text, color, x, progress) => {
+    const trans = progress.interpolate({
+      inputRange: [0, 1],
+      outputRange: [x, 0],
+    }); 
+    return (
+      <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }}>
+        <RectButton
+          style={[styles.rightAction, { backgroundColor: color}]}
+          onPress={() => Communications.email(['moezbh.mbh@gmail.com',''], null,null,  'SUBJECT ', 'BODY')}>
           <Text style={styles.actionText}>{text}</Text>
         </RectButton>        
       </Animated.View>
@@ -64,8 +108,8 @@ export default class AppleStyleSwipeableRow extends Component {
   renderRightActions = progress => (
     <View style={{ width: 192, flexDirection: I18nManager.isRTL? 'row-reverse' : 'row' }}>
       {this.renderRightAction('More', '#C8C7CD', 192, progress)}
-      {this.renderRightAction('Flag', '#ffab00', 128, progress)}
-      {this.renderRightAction('More', '#dd2c00', 64, progress)}
+      {this.renderRightActionTexting('Text', '#ffab00', 128, progress)}
+      {this.renderRightActionMailing('Mail', '#dd2c00', 64, progress)}
     </View>
   );
   updateRef = ref => {
