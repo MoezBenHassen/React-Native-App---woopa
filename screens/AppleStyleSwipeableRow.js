@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { Animated, StyleSheet, Text, View, I18nManager, Platform, Linking } from 'react-native';
+import { Animated, StyleSheet, Text, View, I18nManager, Platform, Linking, TouchableOpacity, TouchableNativeFeedback,TouchableHighlight } from 'react-native';
 
 import { RectButton } from 'react-native-gesture-handler';
 
+
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import Communications from 'react-native-communications'
+import { Ionicons, AntDesign, Entypo, Feather, FontAwesome, MaterialIcons } from '@expo/vector-icons';
+
 
 export default class AppleStyleSwipeableRow extends Component {
   renderLeftActions = (progress, dragX) => {
@@ -34,7 +37,8 @@ export default class AppleStyleSwipeableRow extends Component {
             },]}
             onPress={() => Communications.phonecall('22887300', true)}
         >
-          Call
+   
+        <MaterialIcons name="phone" size={35} color="white"/>
         </Animated.Text>
       </RectButton>
     );
@@ -65,8 +69,8 @@ export default class AppleStyleSwipeableRow extends Component {
       <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }}>
         <RectButton
           style={[styles.rightAction, { backgroundColor: color}]}
-          onPress={pressHandler}>
-          <Text style={styles.actionText}>{text}</Text>
+          onPress={ ()=>{Linking.openURL('whatsapp://send?text=hello&phone=21654103201')} }>
+         <FontAwesome name="whatsapp" size={35} color="white"/>  
         </RectButton>        
       </Animated.View>
     );
@@ -83,7 +87,7 @@ export default class AppleStyleSwipeableRow extends Component {
         <RectButton
           style={[styles.rightAction, { backgroundColor: color}]}
           onPress={() => Communications.text ('22887300')}>
-          <Text style={styles.actionText}>{text}</Text>
+          <MaterialIcons name="message" size={35} color="white"/>  
         </RectButton>        
       </Animated.View>
     );
@@ -100,16 +104,16 @@ export default class AppleStyleSwipeableRow extends Component {
         <RectButton
           style={[styles.rightAction, { backgroundColor: color}]}
           onPress={() => Communications.email(['moezbh.mbh@gmail.com',''], null,null,  'SUBJECT ', 'BODY')}>
-          <Text style={styles.actionText}>{text}</Text>
+          <MaterialIcons name="email" size={35} color="white"/>
         </RectButton>        
       </Animated.View>
     );
   };
   renderRightActions = progress => (
     <View style={{ width: 192, flexDirection: I18nManager.isRTL? 'row-reverse' : 'row' }}>
-      {this.renderRightAction('More', '#C8C7CD', 192, progress)}
-      {this.renderRightActionTexting('Text', '#ffab00', 128, progress)}
-      {this.renderRightActionMailing('Mail', '#dd2c00', 64, progress)}
+      {this.renderRightAction('Whatsapp/msnger', '#25D366', 192, progress)}
+      {this.renderRightActionTexting('Sms', '#ffab00', 128, progress)}
+      {this.renderRightActionMailing('eMail', '#dd2c00', 64, progress)}
     </View>
   );
   updateRef = ref => {
@@ -134,10 +138,11 @@ export default class AppleStyleSwipeableRow extends Component {
   }
 }
 
+
 const styles = StyleSheet.create({
   leftAction: {
     flex: 1,
-    backgroundColor: '#497AFC',
+    backgroundColor: '#f99e23',
     justifyContent: 'center',
   },
   actionText: {

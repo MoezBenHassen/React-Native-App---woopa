@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
   divider: {
     width:1000,
     height: 1,
-    backgroundColor: 'gray',
+    backgroundColor: '#808080',
  
   },
   button: {

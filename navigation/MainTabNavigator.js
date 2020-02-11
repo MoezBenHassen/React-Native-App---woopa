@@ -33,8 +33,8 @@ const HomeStack = createStackNavigator(
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
   tabBarOptions: {
-    activeTintColor: "pink", 
-    inactiveTintColor: "gray", 
+    activeTintColor: "#f99e23", 
+    inactiveTintColor: "#808080", 
     indicatorStyle :{
           backgroundColor:'red'
     },
@@ -63,8 +63,8 @@ const LinksStack = createStackNavigator(
   },{
     headerMode: 'float',
     defaultNavigationOptions: {
-      activeTintColor: '#FFFFFF',
-      headerTintColor: '#FFFFFF',
+      activeTintColor: '#f99e23',
+      headerTintColor: '#f99e23',
       headerStyle: {
         backgroundColor: '#35393e'
       },style: {backgroundColor: '#35393e'}
@@ -77,8 +77,8 @@ const LinksStack = createStackNavigator(
 LinksStack.navigationOptions = {
   tabBarLabel: 'Links',
   tabBarOptions: {
-    activeTintColor: "pink", 
-    inactiveTintColor: "gray", 
+    activeTintColor: "#f99e23", 
+    inactiveTintColor: "#808080", 
     indicatorStyle :{
           backgroundColor:'red'
     },
@@ -101,7 +101,7 @@ const SettingsStack = createStackNavigator(
     headerMode: 'float',
     defaultNavigationOptions: {
       title: 'Settings',
-      headerTintColor: '#FFFFFF',
+      headerTintColor: '#f99e23',
       headerStyle: {
         backgroundColor: '#35393e'
       },style: {backgroundColor: '#35393e'}
@@ -118,8 +118,8 @@ SettingsStack.navigationOptions = {
     headerTintColor: '#FFFFFF'
   },
   tabBarOptions: {
-    activeTintColor: "pink", 
-    inactiveTintColor: "gray", 
+    activeTintColor: "#f99e23", 
+    inactiveTintColor: "#808080", 
     indicatorStyle :{
           backgroundColor:'red'
     },

@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height: 150,
     marginBottom: 50,
-    backgroundColor: 'pink', 
+    backgroundColor: '#f99e23', 
     justifyContent: 'center',
     alignItems: 'center' ,
   },

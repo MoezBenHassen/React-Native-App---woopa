@@ -3,3 +3,9 @@
 #99AAB5
 #FFFFFF
 #7289DA
+
+#497AFC
+
+#ffc0cb => pink,
+
+#808080 => gray
