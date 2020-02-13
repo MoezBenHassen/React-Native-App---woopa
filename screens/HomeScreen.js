@@ -11,9 +11,11 @@ import {
   PanResponder,
   Animated
 } from "react-native";
+
 import { Card } from "react-native-elements";
 import { MonoText } from "../components/StyledText";
 import Project from "../components/Project";
+import Project2 from "../components/Project";
 
 export default class HomeScreen extends Component {
   constructor(props) {
@@ -44,7 +46,6 @@ export default class HomeScreen extends Component {
         </View>
         <View style={styles.cardView}>
           <Animated.View
-            style={StyleSheet.absoluteFill}
             style={{
               transform: [
                 { translateX: this.state.pan.x },
@@ -56,9 +57,11 @@ export default class HomeScreen extends Component {
             <Project
               title={"Web Dev"}
               image={require("../assets/images/cards/webDev.jpg")}
-              text= "developping websites"
+              text="developping websites"
+              
             />
           </Animated.View>
+       
         </View>
       </View>
     );
@@ -106,7 +109,8 @@ const styles = StyleSheet.create({
     marginBottom: 50,
     backgroundColor: "#f99e23",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    elevation: 10
   },
   welcomeImage: {
     width: 100,
