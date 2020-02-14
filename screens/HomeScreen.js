@@ -9,7 +9,8 @@ import {
   TouchableOpacity,
   View,
   PanResponder,
-  Animated
+  Animated,
+  SafeAreaView
 } from "react-native";
 
 import { Card } from "react-native-elements";
@@ -20,7 +21,7 @@ import Project2 from "../components/Project";
 import Swipe from "../components/Swipe";
 import jobs from "../constants/homeData";
 export default class HomeScreen extends Component {
-  constructor(props) {
+  /*constructor(props) {
     super(props);
     this.state = {
       pan: new Animated.ValueXY()
@@ -39,17 +40,55 @@ export default class HomeScreen extends Component {
         }).start();
       }
     });
+  }*/
+  renderCards(job) {
+    return (
+      <Card containerStyle={{borderRadius: 14}} title={job.jobtitle} titleStyle={{ fontSize: 14 }}>
+        <View style={{ height: 200 }}>
+          <Image
+            source={require("../assets/images/cards/webDev.jpg")}
+            style={{ width: "100%", height: 200 }}
+          />
+        </View>
+        <View style={styles.detailWrapper}>
+          <Text>{job.company}</Text>
+          <Text>{job.formattedRelativeTime}</Text>
+        </View>
+        <Text numberOfLines={4}>
+          {job.snippet.replace(/<b>/g, "").replace(/<\/b>/g, "")}
+        </Text>
+      </Card>
+    );
   }
+
+  renderNoMoreCards = () => {
+    return (
+      <Card title="No More cards">
+        <Button
+          title="Do something"
+          large
+          icon={{ name: "my-location" }}
+          backgroundColor="#03A9F4"
+        />
+      </Card>
+    );
+  };
+
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.welcomeContainer}>
           <Text style={styles.titleText}>Our Work</Text>
-          
+
           <ScrollView>
-            <View style={styles.cardView}>
-              <Swipe data={jobs} />
-            </View>
+            <SafeAreaView style={styles.cardView}>
+              <Swipe
+                data={jobs}
+                
+                renderCard={this.renderCards}
+                renderNoMoreCards={this.renderNoMoreCards}
+              />
+            </SafeAreaView>
           </ScrollView>
         </View>
       </View>

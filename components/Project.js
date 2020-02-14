@@ -5,6 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 //import {BoxShadow} from 'react-native-shadow';
 
 class Project extends React.Component {
+    
     render (){
         return (
            <Container style={styles.containerStyle}>
