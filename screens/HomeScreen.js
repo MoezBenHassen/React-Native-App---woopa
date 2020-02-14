@@ -17,6 +17,8 @@ import { MonoText } from "../components/StyledText";
 import Project from "../components/Project";
 import Project2 from "../components/Project";
 
+import Swipe from "../components/Swipe";
+import jobs from "../constants/homeData";
 export default class HomeScreen extends Component {
   constructor(props) {
     super(props);
@@ -43,25 +45,12 @@ export default class HomeScreen extends Component {
       <View style={styles.container}>
         <View style={styles.welcomeContainer}>
           <Text style={styles.titleText}>Our Work</Text>
-        </View>
-        <View style={styles.cardView}>
-          <Animated.View
-            style={{
-              transform: [
-                { translateX: this.state.pan.x },
-                { translateY: this.state.pan.y }
-              ]
-            }}
-            {...this._panResponder.panHandlers}
-          >
-            <Project
-              title={"Web Dev"}
-              image={require("../assets/images/cards/webDev.jpg")}
-              text="developping websites"
-              
-            />
-          </Animated.View>
-       
+          
+          <ScrollView>
+            <View style={styles.cardView}>
+              <Swipe data={jobs} />
+            </View>
+          </ScrollView>
         </View>
       </View>
     );
@@ -81,7 +70,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#2C2F33"
+    backgroundColor: "#2C2F33",
+    paddingBottom: 30
   },
 
   titleText: {
@@ -102,11 +92,11 @@ const styles = StyleSheet.create({
     paddingTop: 30
   },
   welcomeContainer: {
-    flex: 0.25,
+    flex: 1,
     position: "relative",
     alignItems: "center",
     height: 150,
-    marginBottom: 50,
+    marginTop: 30,
     backgroundColor: "#f99e23",
     justifyContent: "center",
     alignItems: "center",
