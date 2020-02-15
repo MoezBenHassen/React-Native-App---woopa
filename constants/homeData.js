@@ -14,7 +14,6 @@ export default  [
       "jobId": "2",
       "formattedRelativeTime": "4 days ago",
     },
-    ,
     {
       "jobtitle": "chose  Developer",
       "company": "Lucent Corp",
@@ -22,7 +21,6 @@ export default  [
       "jobId": "3",
       "formattedRelativeTime": "4 days ago",
     },
-    ,
     {
       "jobtitle": "CHOSE 2 Java Developer",
       "company": "Lucent Corp",
