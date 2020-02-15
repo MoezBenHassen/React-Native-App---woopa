@@ -10,7 +10,8 @@ import {
   View,
   PanResponder,
   Animated,
-  SafeAreaView
+  SafeAreaView,
+  Dimensions,
 } from "react-native";
 
 import { Card } from "react-native-elements";
@@ -19,8 +20,75 @@ import Project from "../components/Project";
 import Project2 from "../components/Project";
 
 import Swipe from "../components/Swipe";
-import jobs from "../constants/homeData";
+//import jobs from "../constants/homeData";
+const SCREEN_HEIGHT = Dimensions.get('window').height
+
+const SCREEN_WIDTH = Dimensions.get('window').width
+const Jobs = [
+  { id: "1", uri: require("../assets/images/cards/webDev.jpg") },
+  { id: "2", uri: require("../assets/images/cards/communication2.jpg") },
+  { id: "1", uri: require("../assets/images/cards/graphicDesign.jpg") }
+];
 export default class HomeScreen extends Component {
+  constructor() {
+    super()
+
+    this.position = new Animated.ValueXY()
+    this.state = {
+      currentIndex: 0
+    }
+  }
+  componentWillMount() {
+    this.PanResponder = PanResponder.create({
+      onStartShouldSetPanResponder: (evt, gestureState) => true,
+      onPanResponderMove: (evt, gestureState) => {
+        this.position.setValue({ x: gestureState.dx, y: gestureState.dy })
+      },
+      onPanResponderRelease: (evt, gestureState) => {
+
+      }
+    })
+  }
+  renderJobs = () => {
+    return Jobs.map((item, i) => {
+      return (
+        <Animated.View
+          {...this.PanResponder.panHandlers}
+          key={item.id}
+          style={
+            [{ transform: this.position.getTranslateTransform() },
+            {
+              height: SCREEN_HEIGHT - 120,
+              width: SCREEN_WIDTH,
+              padding: 10,
+              position: 'absolute'
+            }]
+          }
+        >
+
+          <Image
+            style={{ flex: 1, height: null, width: null, resizeMode: 'cover', borderRadius: 20 }}
+            source={item.uri}
+          />
+        </Animated.View>
+      )
+    }).reverse()
+  }
+  render() {
+    return (
+
+      <View style={{ flex: 1 }}>
+        <View style={{ height: 60 }}></View>
+        <View style={{ flex: 1 }}>
+          {this.renderJobs()}
+        </View>
+        <View style={{ height: 60 }}></View>
+      </View>
+
+    );
+  }
+
+
   /*constructor(props) {
     super(props);
     this.state = {
@@ -41,6 +109,7 @@ export default class HomeScreen extends Component {
       }
     });
   }*/
+  /*
   renderCards(job) {
     return (
       <Card containerStyle={{borderRadius: 14}} title={job.jobtitle} titleStyle={{ fontSize: 14 }}>
@@ -60,7 +129,8 @@ export default class HomeScreen extends Component {
       </Card>
     );
   }
-
+  */
+  /*
   renderNoMoreCards = () => {
     return (
       <Card title="No More cards">
@@ -73,27 +143,13 @@ export default class HomeScreen extends Component {
       </Card>
     );
   };
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.welcomeContainer}>
-          <Text style={styles.titleText}>Our Work</Text>
-
-          <ScrollView style={styles.cardView}>
-            <SafeAreaView >
-              <Swipe
+*/
+  /*  <Swipe
                 data={jobs}
                 
                 renderCard={this.renderCards}
                 renderNoMoreCards={this.renderNoMoreCards}
-              />
-            </SafeAreaView>
-          </ScrollView>
-        </View>
-      </View>
-    );
-  }
+              />*/
 }
 
 HomeScreen.navigationOptions = {
