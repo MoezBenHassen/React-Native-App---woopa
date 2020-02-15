@@ -54,7 +54,7 @@ export default class HomeScreen extends Component {
           <Text>{job.company}</Text>
           <Text>{job.formattedRelativeTime}</Text>
         </View>
-        <Text numberOfLines={4}>
+        <Text numberOfLines={1}>
           {job.snippet.replace(/<b>/g, "").replace(/<\/b>/g, "")}
         </Text>
       </Card>
@@ -80,8 +80,8 @@ export default class HomeScreen extends Component {
         <View style={styles.welcomeContainer}>
           <Text style={styles.titleText}>Our Work</Text>
 
-          <ScrollView>
-            <SafeAreaView style={styles.cardView}>
+          <ScrollView style={styles.cardView}>
+            <SafeAreaView >
               <Swipe
                 data={jobs}
                 
@@ -107,8 +107,6 @@ const styles = StyleSheet.create({
   },
   cardView: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     backgroundColor: "#2C2F33",
     paddingBottom: 30
   },
