@@ -27,7 +27,19 @@ const SCREEN_WIDTH = Dimensions.get("window").width;
 const Jobs = [
   { id: "1", uri: require("../assets/images/cards/webDev.jpg") },
   { id: "2", uri: require("../assets/images/cards/communication2.jpg") },
-  { id: "1", uri: require("../assets/images/cards/graphicDesign.jpg") }
+  { id: "3", uri: require("../assets/images/cards/graphicDesign.jpg") },
+  { id: "4", uri: require("../assets/images/cards/webDev.jpg") },
+  { id: "5", uri: require("../assets/images/cards/communication2.jpg") },
+  { id: "6", uri: require("../assets/images/cards/graphicDesign.jpg") },
+  { id: "7", uri: require("../assets/images/cards/webDev.jpg") },
+  { id: "8", uri: require("../assets/images/cards/communication2.jpg") },
+  { id: "9", uri: require("../assets/images/cards/graphicDesign.jpg") },
+  { id: "10", uri: require("../assets/images/cards/webDev.jpg") },
+  { id: "11", uri: require("../assets/images/cards/communication2.jpg") },
+  { id: "12", uri: require("../assets/images/cards/graphicDesign.jpg") },
+  { id: "13", uri: require("../assets/images/cards/webDev.jpg") },
+  { id: "14", uri: require("../assets/images/cards/communication2.jpg") },
+  { id: "15", uri: require("../assets/images/cards/graphicDesign.jpg") },
 ];
 export default class HomeScreen extends Component {
   constructor() {
@@ -57,25 +69,25 @@ export default class HomeScreen extends Component {
       inputRange: [-SCREEN_WIDTH / 2, 0, SCREEN_WIDTH / 2],
       outputRange: [0, 0, 1],
       extrapolate: "clamp"
-    })
+    });
 
     this.dislikeOpacity = this.position.x.interpolate({
       inputRange: [-SCREEN_WIDTH / 2, 0, SCREEN_WIDTH / 2],
       outputRange: [1, 0, 0],
       extrapolate: "clamp"
-    })
+    });
 
     this.nextCardOpacity = this.position.x.interpolate({
       inputRange: [-SCREEN_WIDTH / 2, 0, SCREEN_WIDTH / 2],
       outputRange: [1, 0.8, 1],
       extrapolate: "clamp"
-    })
+    });
 
     this.nextCardScale = this.position.x.interpolate({
       inputRange: [-SCREEN_WIDTH / 2, 0, SCREEN_WIDTH / 2],
       outputRange: [1, 0, 1],
       extrapolate: "clamp"
-    })
+    });
   }
   componentWillMount() {
     this.PanResponder = PanResponder.create({
@@ -84,32 +96,31 @@ export default class HomeScreen extends Component {
         this.position.setValue({ x: gestureState.dx, y: gestureState.dy });
       },
       onPanResponderRelease: (evt, gestureState) => {
-        if (gestureState.dx > 120) {
+        if (gestureState.dx > 180) {
           Animated.spring(this.position, {
             toValue: { x: SCREEN_WIDTH + 100, y: gestureState.dy }
           }).start(() => {
             this.setState({ currentIndex: this.state.currentIndex + 1 }, () => {
-              this.position.setValue({ x: 0, y: 0 })
-            })
-          })
-        } else if (gestureState.dx < -120) {
+              this.position.setValue({ x: 0, y: 0 });
+            });
+          });
+        } else if (gestureState.dx < -180) {
           Animated.spring(this.position, {
             toValue: { x: -SCREEN_WIDTH - 100, y: gestureState.dy }
           }).start(() => {
             this.setState({ currentIndex: this.state.currentIndex + 1 }, () => {
-              this.position.setValue({ x: 0, y: 0 })
-            })
-          })
+              this.position.setValue({ x: 0, y: 0 });
+            });
+          });
         } else {
           Animated.spring(this.position, {
             toValue: { x: 0, y: 0 },
             friction: 4
-          }).start()
+          }).start();
         }
       }
     });
   }
-
 
   renderJobs = () => {
     return Jobs.map((item, i) => {
@@ -123,7 +134,7 @@ export default class HomeScreen extends Component {
             style={[
               this.rotateAndTranslate,
               {
-                height: SCREEN_HEIGHT - 120,
+                height: SCREEN_HEIGHT - 180,
                 width: SCREEN_WIDTH,
                 padding: 10,
                 position: "absolute"
@@ -131,7 +142,14 @@ export default class HomeScreen extends Component {
             ]}
           >
             <Animated.View
-              style={{ opacity: this.likeOpacity, transform: [{ rotate: '-30deg' }], position: "absolute", top: 50, left: 40, zIndex: 1000 }}
+              style={{
+                opacity: this.likeOpacity,
+                transform: [{ rotate: "-30deg" }],
+                position: "absolute",
+                top: 50,
+                left: 40,
+                zIndex: 1000
+              }}
             >
               <Text
                 style={{
@@ -139,16 +157,23 @@ export default class HomeScreen extends Component {
                   borderColor: "green",
                   color: "green",
                   fontSize: 25,
-                  fontWeight: '800',
+                  fontWeight: "800",
                   padding: 10
                 }}
               >
                 LIKE
-                </Text>
+              </Text>
             </Animated.View>
 
             <Animated.View
-              style={{ opacity: this.dislikeOpacity, transform: [{ rotate: '30deg' }], position: "absolute", top: 50, right: 40, zIndex: 1000 }}
+              style={{
+                opacity: this.dislikeOpacity,
+                transform: [{ rotate: "30deg" }],
+                position: "absolute",
+                top: 50,
+                right: 40,
+                zIndex: 1000
+              }}
             >
               <Text
                 style={{
@@ -156,12 +181,12 @@ export default class HomeScreen extends Component {
                   borderColor: "red",
                   color: "red",
                   fontSize: 25,
-                  fontWeight: '800',
+                  fontWeight: "800",
                   padding: 10
                 }}
               >
                 NOPE
-                </Text>
+              </Text>
             </Animated.View>
             <Image
               style={{
@@ -173,7 +198,8 @@ export default class HomeScreen extends Component {
               }}
               source={item.uri}
             />
-          </Animated.View >
+
+          </Animated.View>
         );
       } else {
         return (
@@ -183,13 +209,14 @@ export default class HomeScreen extends Component {
               {
                 opacity: this.nextCardOpacity,
                 transform: [{ scale: this.nextCardScale }],
-                height: SCREEN_HEIGHT - 120,
+                height: SCREEN_HEIGHT - 180,
                 width: SCREEN_WIDTH,
                 padding: 10,
                 position: "absolute"
               }
             ]}
           >
+            {}
             <Image
               style={{
                 flex: 1,
@@ -201,6 +228,7 @@ export default class HomeScreen extends Component {
               source={item.uri}
             />
           </Animated.View>
+
         );
       }
     }).reverse();
@@ -208,74 +236,28 @@ export default class HomeScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <View style={{ height: 60 }}></View>
-        <View style={{ flex: 1 }}>{this.renderJobs()}</View>
-        <View style={{ height: 60 }}></View>
-      </View>
-    );
-  }
+        <View
+          style={{
+            height: 150,
+            backgroundColor: "#f99e23",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingTop: 30,
+            paddingBottom: 20,
 
-  /*constructor(props) {
-    super(props);
-    this.state = {
-      pan: new Animated.ValueXY()
-    };
-  }
-  componentWillMount() {
-    this._panResponder = PanResponder.create({
-      onMoveShouldSetPanResponder: () => true,
-      onPanResponderMove: Animated.event([
-        null,
-        { dx: this.state.pan.x, dy: this.state.pan.y }
-      ]),
-      onPanResponderRelease: () => {
-        Animated.spring(this.state.pan, {
-          toValue: { x: 0, y: 0 }
-        }).start();
-      }
-    });
-  }*/
-  /*
-  renderCards(job) {
-    return (
-      <Card containerStyle={{borderRadius: 14}} title={job.jobtitle} titleStyle={{ fontSize: 14 }}>
-        <View style={{ height: 200 }}>
-          <Image
-            source={require("../assets/images/cards/webDev.jpg")}
-            style={{ width: "100%", height: 200 }}
-          />
+          }}
+        >
+          <Text style={styles.titleText}> Our Work  </Text>
         </View>
-        <View style={styles.detailWrapper}>
-          <Text>{job.company}</Text>
-          <Text>{job.formattedRelativeTime}</Text>
-        </View>
-        <Text numberOfLines={1}>
-          {job.snippet.replace(/<b>/g, "").replace(/<\/b>/g, "")}
-        </Text>
-      </Card>
+
+        <View style={{ flex: 1, backgroundColor: '#2C2F33' }}>{this.renderJobs()}</View>
+
+        <View style={{ height: 0, backgroundColor: '#2C2F33' }}></View>
+
+      </View >
     );
+
   }
-  */
-  /*
-  renderNoMoreCards = () => {
-    return (
-      <Card title="No More cards">
-        <Button
-          title="Do something"
-          large
-          icon={{ name: "my-location" }}
-          backgroundColor="#03A9F4"
-        />
-      </Card>
-    );
-  };
-*/
-  /*  <Swipe
-                data={jobs}
-                
-                renderCard={this.renderCards}
-                renderNoMoreCards={this.renderNoMoreCards}
-              />*/
 }
 
 HomeScreen.navigationOptions = {
@@ -288,7 +270,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#2C2F33"
   },
   cardView: {
-    flex: 1,
     backgroundColor: "#2C2F33",
     paddingBottom: 30
   },
@@ -298,7 +279,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     margin: 10,
     color: "white",
-    textDecorationLine: "underline"
+
   },
   developmentModeText: {
     marginBottom: 20,

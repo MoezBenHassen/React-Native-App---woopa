@@ -8,6 +8,8 @@ import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
+import mapScreen from '../screens/mapsScreen';
+
 
 const config = Platform.select({
   web: { headerMode: 'float' },
@@ -18,27 +20,27 @@ const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
 
-  },{
-    headerMode: 'screen',
-    defaultNavigationOptions: {
-      headerTintColor: '#444',
-      headerStyle: {
-        backgroundColor: '#35393e'
-      }
+  }, {
+  headerMode: 'screen',
+  defaultNavigationOptions: {
+    headerTintColor: '#444',
+    headerStyle: {
+      backgroundColor: '#35393e'
     }
-  },
+  }
+},
   config
 );
 
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
   tabBarOptions: {
-    activeTintColor: "#f99e23", 
-    inactiveTintColor: "#808080", 
-    indicatorStyle :{
-          backgroundColor:'red'
+    activeTintColor: "#f99e23",
+    inactiveTintColor: "#808080",
+    indicatorStyle: {
+      backgroundColor: 'red'
     },
-    style: {backgroundColor: '#35393e'}
+    style: { backgroundColor: '#35393e' }
   },
   tabBarIcon: ({ focused, tintColor }) => (
     <TabBarIcon
@@ -57,35 +59,35 @@ HomeStack.path = '';
 const LinksStack = createStackNavigator(
   {
     Links: {
-      screen:LinksScreen,
+      screen: LinksScreen,
     },
-    
-  },{
-    headerMode: 'float',
-    defaultNavigationOptions: {
-      activeTintColor: '#f99e23',
-      headerTintColor: '#f99e23',
-      headerStyle: {
-        backgroundColor: '#35393e'
-      },style: {backgroundColor: '#35393e'}
-    }
-  },
-  
+
+  }, {
+  headerMode: 'float',
+  defaultNavigationOptions: {
+    activeTintColor: '#f99e23',
+    headerTintColor: '#f99e23',
+    headerStyle: {
+      backgroundColor: '#35393e'
+    }, style: { backgroundColor: '#35393e' }
+  }
+},
+
   config
 );
 
 LinksStack.navigationOptions = {
   tabBarLabel: 'Links',
   tabBarOptions: {
-    activeTintColor: "#f99e23", 
-    inactiveTintColor: "#808080", 
-    indicatorStyle :{
-          backgroundColor:'red'
+    activeTintColor: "#f99e23",
+    inactiveTintColor: "#808080",
+    indicatorStyle: {
+      backgroundColor: 'red'
     },
-    style: {backgroundColor: '#35393e'}
+    style: { backgroundColor: '#35393e' }
   },
-  tabBarIcon: ({ focused, tintColor}) => (
-    <TabBarIcon color = {tintColor} focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+  tabBarIcon: ({ focused, tintColor }) => (
+    <TabBarIcon color={tintColor} focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
   )
 };
 
@@ -104,26 +106,29 @@ const SettingsStack = createStackNavigator(
       headerTintColor: '#f99e23',
       headerStyle: {
         backgroundColor: '#35393e'
-      },style: {backgroundColor: '#35393e'}
+      }, style: { backgroundColor: '#35393e' }
     }
   },
   config
 );
 
+
+
+
 SettingsStack.navigationOptions = {
   tabBarLabel: 'Contact',
-  
-  headerStyle:{
+
+  headerStyle: {
     backgroundColor: '#35393e',
     headerTintColor: '#FFFFFF'
   },
   tabBarOptions: {
-    activeTintColor: "#f99e23", 
-    inactiveTintColor: "#808080", 
-    indicatorStyle :{
-          backgroundColor:'red'
+    activeTintColor: "#f99e23",
+    inactiveTintColor: "#808080",
+    indicatorStyle: {
+      backgroundColor: 'red'
     },
-    style: {backgroundColor: '#35393e'}
+    style: { backgroundColor: '#35393e' }
   },
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-contact' : 'md-contact'} />
@@ -133,10 +138,54 @@ SettingsStack.navigationOptions = {
 SettingsStack.path = '';
 
 
+const mapStack = createStackNavigator(
+  {
+    Links: {
+      screen: mapScreen,
+    },
+
+  }, {
+  headerMode: 'float',
+  defaultNavigationOptions: {
+    activeTintColor: '#f99e23',
+    headerTintColor: '#f99e23',
+    headerStyle: {
+      backgroundColor: '#35393e'
+    }, style: { backgroundColor: '#35393e' }
+  }
+},
+
+  config
+);
+
+mapStack.navigationOptions = {
+  tabBarLabel: 'map',
+
+  headerStyle: {
+    backgroundColor: '#35393e',
+    headerTintColor: '#FFFFFF'
+  },
+  tabBarOptions: {
+    activeTintColor: "#f99e23",
+    inactiveTintColor: "#808080",
+    indicatorStyle: {
+      backgroundColor: 'red'
+    },
+    style: { backgroundColor: '#35393e' }
+  },
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-settings' : 'md-settigs'} />
+  ),
+};
+
+mapStack.path = '';
+
+
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
   LinksStack,
   SettingsStack,
+  mapStack,
 });
 
 tabNavigator.path = '';
