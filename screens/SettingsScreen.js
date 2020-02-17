@@ -42,7 +42,6 @@ const Row = ({ item }) => (
     <Text style={styles.dateText}>{"❭"}</Text>
   </RectButton>
 );
-
 const SwipeableRow = ({ item, index }) => {
   return (
     <AppleStyleSwipeableRow>
@@ -119,21 +118,21 @@ const styles = StyleSheet.create({
 const DATA = [
   {
     from: "Fadoua Meddallel",
-    avatar:  require("../assets/images/avatars/fadouaAvatar.jpg"),
+    avatar: require("../assets/images/avatars/fadouaAvatar.jpg"),
     when: "3:11 PM",
     message:
       "Unus pro omnibus, omnes pro uno. Nunc scelerisque, massa non lacinia porta, quam odio dapibus enim, nec tincidunt dolor leo non neque"
   },
   {
     from: "Youssef Bouafif",
-    avatar:  require("../assets/images/avatars/youssefAvatar.jpg"),
+    avatar: require("../assets/images/avatars/youssefAvatar.jpg"),
     when: "11:46 AM",
     message:
       "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus hendrerit ligula dignissim maximus aliquet. Integer tincidunt, tortor at finibus molestie, ex tellus laoreet libero, lobortis consectetur nisl diam viverra justo."
   },
   {
     from: "Abdessalem abid",
-    avatar:  require("../assets/images/avatars/abdessalemAvatar.jpg"),
+    avatar: require("../assets/images/avatars/abdessalemAvatar.jpg"),
     when: "6:06 AM",
     message:
       "Sed non arcu ullamcorper, eleifend velit eu, tristique metus. Duis id sapien eu orci varius malesuada et ac ipsum. Ut a magna vel urna tristique sagittis et dapibus augue. Vivamus non mauris a turpis auctor sagittis vitae vel ex. Curabitur accumsan quis mauris quis venenatis."
