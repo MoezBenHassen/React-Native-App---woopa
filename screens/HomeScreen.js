@@ -25,21 +25,21 @@ const SCREEN_HEIGHT = Dimensions.get("window").height;
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const Jobs = [
-  { id: "1", uri: require("../assets/images/cards/webDev.jpg") },
-  { id: "2", uri: require("../assets/images/cards/communication2.jpg") },
-  { id: "3", uri: require("../assets/images/cards/graphicDesign.jpg") },
-  { id: "4", uri: require("../assets/images/cards/webDev.jpg") },
-  { id: "5", uri: require("../assets/images/cards/communication2.jpg") },
-  { id: "6", uri: require("../assets/images/cards/graphicDesign.jpg") },
-  { id: "7", uri: require("../assets/images/cards/webDev.jpg") },
-  { id: "8", uri: require("../assets/images/cards/communication2.jpg") },
-  { id: "9", uri: require("../assets/images/cards/graphicDesign.jpg") },
-  { id: "10", uri: require("../assets/images/cards/webDev.jpg") },
-  { id: "11", uri: require("../assets/images/cards/communication2.jpg") },
-  { id: "12", uri: require("../assets/images/cards/graphicDesign.jpg") },
-  { id: "13", uri: require("../assets/images/cards/webDev.jpg") },
-  { id: "14", uri: require("../assets/images/cards/communication2.jpg") },
-  { id: "15", uri: require("../assets/images/cards/graphicDesign.jpg") },
+  { id: "1", uri: require("../assets/images/cards/webDevIRL.jpg") },
+  { id: "2", uri: require("../assets/images/cards/Screenshot_2.jpg") },
+  { id: "3", uri: require("../assets/images/cards/graphicDesignerIRL.jpg") },
+  { id: "4", uri: require("../assets/images/cards/webDevIRL.jpg") },
+  { id: "5", uri: require("../assets/images/cards/Screenshot_2.jpg") },
+  { id: "6", uri: require("../assets/images/cards/graphicDesignerIRL.jpg") },
+  { id: "7", uri: require("../assets/images/cards/webDevIRL.jpg") },
+  { id: "8", uri: require("../assets/images/cards/Screenshot_2.jpg") },
+  { id: "9", uri: require("../assets/images/cards/graphicDesignerIRL.jpg") },
+  { id: "10", uri: require("../assets/images/cards/webDevIRL.jpg") },
+  { id: "11", uri: require("../assets/images/cards/Screenshot_2.jpg") },
+  { id: "12", uri: require("../assets/images/cards/graphicDesignerIRL.jpg") },
+  { id: "13", uri: require("../assets/images/cards/webDevIRL.jpg") },
+  { id: "14", uri: require("../assets/images/cards/Screenshot_2.jpg") },
+  { id: "15", uri: require("../assets/images/cards/graphicDesignerIRL.jpg") },
 ];
 export default class HomeScreen extends Component {
   constructor() {

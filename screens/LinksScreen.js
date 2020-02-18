@@ -26,50 +26,49 @@ export default function LinksScreen() {
             source={require('../assets/images/blackDownArrow.png')}
           />
         </View>
-        <TouchableOpacity style={styles.link_container} >
-          <SocialIcon
-            //Social Icon using react-native-elements
-            button
-            //To make a button type Social Icon
-            title=" facebook "
-            light
-            //Title of Social Button
-            type="facebook"
-            //Type of Social Icon
-            onPress={() => { Linking.openURL('fb://www.facebook.com') }}
-          />
-        </TouchableOpacity>
-        <Text>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <TouchableOpacity onPress={() => {
+            if (Platform.OS === 'ios') {
+              Linking.openURL("maps://www.google.com/maps/place/Carrefour+Ksar+Said/@36.8175313,10.1019402,17z/data=!3m1!4b1!4m5!3m4!1s0x12fd325deeb0cfc3:0x380dc7e055dcc97!8m2!3d36.817527!4d10.1041342");
+            }
+            else /* else use Google */ {
+              Linking.openURL("https://www.google.com/maps/place/Carrefour+Ksar+Said/@36.8175313,10.1019402,17z/data=!3m1!4b1!4m5!3m4!1s0x12fd325deeb0cfc3:0x380dc7e055dcc97!8m2!3d36.817527!4d10.1041342")
+            };
+            console.log(" chose happened here !")
+          }}>
+            <Image style={{ margin: 10, width: 100, height: 100 }} source={require('../assets/images/fbIcon.png')} />
+          </TouchableOpacity>
 
-        </Text>
-        <TouchableOpacity style={styles.link_container}>
-          <SocialIcon
-            //Social Icon using react-native-elements
-            button
-            light
-            //To make a button type Social Icon
-            title=" instagram "
-            //Title of Social Button
-            type="instagram"
-            //Type of Social Icon
-            onPress={() => { Linking.openURL('instagram://user?username=dal.digitalagency') }}
-          />
-        </TouchableOpacity>
+        </View>
 
-        <TouchableOpacity style={styles.link_container}>
-          <SocialIcon
-            //Social Icon using react-native-elements
-            button
-            light
-            //To make a button type Social Icon
-            title=" website "
-            //Title of Social Button
-            type="wordpress"
-            //Type of Social Icon
-            onPress={() => { Linking.openURL('https://dal-digitalagency.com') }}
-          />
-        </TouchableOpacity>
-        <Button onPress={openFacebookHQ} color="red " title=" clikidiki " />
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <TouchableOpacity onPress={() => {
+            if (Platform.OS === 'ios') {
+              Linking.openURL("maps://www.google.com/maps/place/Carrefour+Ksar+Said/@36.8175313,10.1019402,17z/data=!3m1!4b1!4m5!3m4!1s0x12fd325deeb0cfc3:0x380dc7e055dcc97!8m2!3d36.817527!4d10.1041342");
+            }
+            else /* else use Google */ {
+              Linking.openURL("https://www.google.com/maps/place/Carrefour+Ksar+Said/@36.8175313,10.1019402,17z/data=!3m1!4b1!4m5!3m4!1s0x12fd325deeb0cfc3:0x380dc7e055dcc97!8m2!3d36.817527!4d10.1041342")
+            };
+            console.log(" chose happened here !")
+          }}>
+            <Image style={{ margin: 10, width: 100, height: 100 }} source={require('../assets/images/instaIcon.png')} />
+          </TouchableOpacity>
+
+        </View><View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <TouchableOpacity onPress={() => {
+            if (Platform.OS === 'ios') {
+              Linking.openURL("maps://www.google.com/maps/place/Carrefour+Ksar+Said/@36.8175313,10.1019402,17z/data=!3m1!4b1!4m5!3m4!1s0x12fd325deeb0cfc3:0x380dc7e055dcc97!8m2!3d36.817527!4d10.1041342");
+            }
+            else /* else use Google */ {
+              Linking.openURL("https://www.google.com/maps/place/Carrefour+Ksar+Said/@36.8175313,10.1019402,17z/data=!3m1!4b1!4m5!3m4!1s0x12fd325deeb0cfc3:0x380dc7e055dcc97!8m2!3d36.817527!4d10.1041342")
+            };
+            console.log(" chose happened here !")
+          }}>
+            <Image style={{ margin: 10, width: 100, height: 100 }} source={require('../assets/images/webIcon.png')} />
+          </TouchableOpacity>
+
+        </View>
+
       </View>
     </ScrollView>
   );
