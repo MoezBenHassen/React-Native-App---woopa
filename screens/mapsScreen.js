@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Dimensions, StyleSheet, Text, View, Image, Button, Platform, Linking, TouchableOpacity } from 'react-native';
+import { Dimensions, StyleSheet, Text, View, Image, Button, Platform, Linking, TouchableOpacity, Animated } from 'react-native';
 
 import MapView from 'react-native-maps';
 import * as Permissions from 'expo-permissions'
@@ -10,24 +10,35 @@ import LottieView from "lottie-react-native";
 const locations = require('../constants/locations.json');
 export default class mapScreen extends Component {
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            positionLeft: new Animated.Value(Dimensions.get('window').width)
+        }
+    }
 
+    componentDidMount() {
+        Animated.spring(
+            this.state.positionLeft, {
+            toValue: 0
+        }
+        ).start()
+    }
     render() {
         return (
+
             <View style={{ backgroundColor: '#2C2F33', flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <TouchableOpacity onPress={() => {
                     if (Platform.OS === 'ios') {
-                        Linking.openURL("maps://www.google.com/maps/place/Carrefour+Ksar+Said/@36.8175313,10.1019402,17z/data=!3m1!4b1!4m5!3m4!1s0x12fd325deeb0cfc3:0x380dc7e055dcc97!8m2!3d36.817527!4d10.1041342");
+                        Linking.openURL("https://www.google.com/maps/place/Carrefour+Ksar+Said/@36.8175313,10.1019402,17z/data=!3m1!4b1!4m5!3m4!1s0x12fd325deeb0cfc3:0x380dc7e055dcc97!8m2!3d36.817527!4d10.1041342");
                     }
                     else /* else use Google */ {
                         Linking.openURL("https://www.google.com/maps/place/Carrefour+Ksar+Said/@36.8175313,10.1019402,17z/data=!3m1!4b1!4m5!3m4!1s0x12fd325deeb0cfc3:0x380dc7e055dcc97!8m2!3d36.817527!4d10.1041342")
                     };
-                    console.log(" chose happened here !")
                 }}>
-                    <Image style={{ marginTop: 100, width: 200, height: 200 }} source={require('../assets/images/mapsIcon.png')} />
+                    <Animated.Image style={[{ left: this.state.positionLeft }, { marginTop: 100, width: 200, height: 200 }]} source={require('../assets/images/mapsIcon.png')} />
                 </TouchableOpacity>
-
             </View>
-
         )
     }
 }

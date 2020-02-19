@@ -6,9 +6,12 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import ContactScreen from '../screens/ContactScreen';
 
 import mapScreen from '../screens/mapsScreen';
+import { fromLeft } from 'react-navigation-transitions';
+
+
 
 
 const config = Platform.select({
@@ -16,6 +19,9 @@ const config = Platform.select({
   default: {},
 });
 
+
+
+/* HOME SECTION */
 const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
@@ -56,6 +62,7 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
+/* LINK SECTION */
 const LinksStack = createStackNavigator(
   {
     Links: {
@@ -93,21 +100,27 @@ LinksStack.navigationOptions = {
 
 LinksStack.path = '';
 
-const SettingsStack = createStackNavigator(
+/* CONTACT SECTION */
+const ContactStack = createStackNavigator(
   {
     Settings: {
-      screen: SettingsScreen,
+      screen: ContactScreen,
     },
+    initialRouteName: 'Settingsscreen',
+    transitionConfig: () => fromLeft()
   },
   {
     headerMode: 'float',
     defaultNavigationOptions: {
-      title: 'Settings',
+      title: 'Contact',
       headerTintColor: '#f99e23',
       headerStyle: {
         backgroundColor: '#35393e'
-      }, style: { backgroundColor: '#35393e' }
-    }
+      },
+      style: { backgroundColor: '#35393e' },
+
+    },
+
   },
   config
 );
@@ -115,7 +128,7 @@ const SettingsStack = createStackNavigator(
 
 
 
-SettingsStack.navigationOptions = {
+ContactStack.navigationOptions = {
   tabBarLabel: 'Contact',
 
   headerStyle: {
@@ -135,9 +148,9 @@ SettingsStack.navigationOptions = {
   ),
 };
 
-SettingsStack.path = '';
+ContactStack.path = '';
 
-
+/* MAP SECTION */
 const mapStack = createStackNavigator(
   {
     Links: {
@@ -159,7 +172,7 @@ const mapStack = createStackNavigator(
 );
 
 mapStack.navigationOptions = {
-  tabBarLabel: 'map',
+  tabBarLabel: 'Map',
 
   headerStyle: {
     backgroundColor: '#35393e',
@@ -184,7 +197,7 @@ mapStack.path = '';
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
   LinksStack,
-  SettingsStack,
+  ContactStack,
   mapStack,
 });
 

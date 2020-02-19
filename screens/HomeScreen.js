@@ -20,26 +20,27 @@ import Project from "../components/Project";
 import Project2 from "../components/Project";
 
 import Swipe from "../components/Swipe";
+//import { Icon } from "react-native-vector-icons/Icon";
 //import jobs from "../constants/homeData";
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const Jobs = [
-  { id: "1", uri: require("../assets/images/cards/webDevIRL.jpg") },
-  { id: "2", uri: require("../assets/images/cards/Screenshot_2.jpg") },
-  { id: "3", uri: require("../assets/images/cards/graphicDesignerIRL.jpg") },
-  { id: "4", uri: require("../assets/images/cards/webDevIRL.jpg") },
-  { id: "5", uri: require("../assets/images/cards/Screenshot_2.jpg") },
-  { id: "6", uri: require("../assets/images/cards/graphicDesignerIRL.jpg") },
-  { id: "7", uri: require("../assets/images/cards/webDevIRL.jpg") },
-  { id: "8", uri: require("../assets/images/cards/Screenshot_2.jpg") },
-  { id: "9", uri: require("../assets/images/cards/graphicDesignerIRL.jpg") },
-  { id: "10", uri: require("../assets/images/cards/webDevIRL.jpg") },
-  { id: "11", uri: require("../assets/images/cards/Screenshot_2.jpg") },
-  { id: "12", uri: require("../assets/images/cards/graphicDesignerIRL.jpg") },
-  { id: "13", uri: require("../assets/images/cards/webDevIRL.jpg") },
-  { id: "14", uri: require("../assets/images/cards/Screenshot_2.jpg") },
-  { id: "15", uri: require("../assets/images/cards/graphicDesignerIRL.jpg") },
+  { id: "1", uri: require("../assets/images/cards/webDevIRL.jpg"), name: "Web Dev" },
+  { id: "2", uri: require("../assets/images/cards/Screenshot_2.jpg"), name: "Social Media" },
+  { id: "3", uri: require("../assets/images/cards/graphicDesignerIRL.jpg"), name: "Graphic Desgin" },
+  { id: "4", uri: require("../assets/images/cards/webDevIRL.jpg"), name: "Web Dev" },
+  { id: "5", uri: require("../assets/images/cards/Screenshot_2.jpg"), name: "Social Media" },
+  { id: "6", uri: require("../assets/images/cards/graphicDesignerIRL.jpg"), name: "Graphic Design" },
+  { id: "7", uri: require("../assets/images/cards/webDevIRL.jpg"), name: "Web Dev" },
+  { id: "8", uri: require("../assets/images/cards/Screenshot_2.jpg"), name: "Social Media" },
+  { id: "9", uri: require("../assets/images/cards/graphicDesignerIRL.jpg"), name: "Graphic Design" },
+  { id: "10", uri: require("../assets/images/cards/webDevIRL.jpg"), name: "Web Dev" },
+  { id: "11", uri: require("../assets/images/cards/Screenshot_2.jpg"), name: "Social Media" },
+  { id: "12", uri: require("../assets/images/cards/graphicDesignerIRL.jpg"), name: "Graphic Design" },
+  { id: "13", uri: require("../assets/images/cards/webDevIRL.jpg"), name: "Web Dev" },
+  { id: "14", uri: require("../assets/images/cards/Screenshot_2.jpg"), name: "Social Media" },
+  { id: "15", uri: require("../assets/images/cards/graphicDesignerIRL.jpg"), name: "Graphic Design" },
 ];
 export default class HomeScreen extends Component {
   constructor() {
@@ -151,18 +152,7 @@ export default class HomeScreen extends Component {
                 zIndex: 1000
               }}
             >
-              <Text
-                style={{
-                  borderWidth: 1,
-                  borderColor: "green",
-                  color: "green",
-                  fontSize: 25,
-                  fontWeight: "800",
-                  padding: 10
-                }}
-              >
-                LIKE
-              </Text>
+              <Image source={require('../assets/images/leftArrow.png')} />
             </Animated.View>
 
             <Animated.View
@@ -175,18 +165,9 @@ export default class HomeScreen extends Component {
                 zIndex: 1000
               }}
             >
-              <Text
-                style={{
-                  borderWidth: 1,
-                  borderColor: "red",
-                  color: "red",
-                  fontSize: 25,
-                  fontWeight: "800",
-                  padding: 10
-                }}
-              >
-                NOPE
-              </Text>
+
+              <Image source={require('../assets/images/rightArrow.png')} />
+
             </Animated.View>
             <Image
               style={{
@@ -198,6 +179,10 @@ export default class HomeScreen extends Component {
               }}
               source={item.uri}
             />
+
+            <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center' }}>
+              <Text style={{ color: 'white', fontWeight: 'bold' }} >{item.name}</Text>
+            </View>
 
           </Animated.View>
         );
@@ -216,7 +201,7 @@ export default class HomeScreen extends Component {
               }
             ]}
           >
-            {}
+
             <Image
               style={{
                 flex: 1,
@@ -227,6 +212,9 @@ export default class HomeScreen extends Component {
               }}
               source={item.uri}
             />
+            <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center' }}>
+              <Text style={{ color: 'white', fontWeight: 'bold' }} >{item.name}</Text>
+            </View>
           </Animated.View>
 
         );

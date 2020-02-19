@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import * as WebBrowser from 'expo-web-browser';
-import { ScrollView, StyleSheet, View, Text, Linking, Image } from 'react-native';
+import { ScrollView, StyleSheet, View, Text, Linking, Image, Animated, Dimensions } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 import { SocialIcon, Divider, Button } from 'react-native-elements';
 //import Icon from 'react-native-ionicons'
@@ -14,64 +14,83 @@ const yosemite = { latitude: 37.865101, longitude: -119.538330 };
 const openYosemite = createOpenLink(yosemite);
 const openYosemiteZoomedOut = createOpenLink({ ...yosemite, zoom: 30 });
 
-export default function LinksScreen() {
+export default class LinksScreen extends Component {
 
-  return (
-    <ScrollView style={styles.container}>
-      <View style={styles.content_container}>
-        <Text style={styles.socials_title}> Check our Socials !</Text>
-        <View style={styles.image_container}>
-          <Image
-            style={styles.image}
-            source={require('../assets/images/blackDownArrow.png')}
-          />
+  constructor(props) {
+    super(props)
+    this.state = {
+      positionBottom: new Animated.Value(Dimensions.get('window').width),
+      positionBottom2: new Animated.Value(Dimensions.get('window').width)
+    }
+  }
+
+  componentDidMount() {
+    Animated.spring(
+      this.state.positionBottom, {
+      toValue: 0
+    }
+    ).start()
+  }
+  render() {
+
+
+    return (
+      <ScrollView style={styles.container} >
+        <View style={styles.content_container}>
+          <Text style={styles.socials_title}> Check our Socials !</Text>
+          <View style={styles.image_container}>
+            <Animated.Image
+              style={[{ bottom: this.state.positionBottom }, styles.image]}
+              source={require('../assets/images/blackDownArrow.png')}
+            />
+          </View>
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <TouchableOpacity onPress={() => {
+              if (Platform.OS === 'ios') {
+                Linking.openURL("fb://www.facebook.com");
+              }
+              else /* else use Google */ {
+                Linking.openURL("fb://https://www.facebook.com")
+              };
+              console.log(" chose happened here !")
+            }}>
+              <Animated.Image style={[{ bottom: this.state.positionBottom }, { margin: 10, width: 100, height: 100 }]} source={require('../assets/images/fbIcon.png')} />
+            </TouchableOpacity>
+
+          </View>
+
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <TouchableOpacity onPress={() => {
+              if (Platform.OS === 'ios') {
+                Linking.openURL("insta://www.instagram.com");
+              }
+              else /* else use Google */ {
+                Linking.openURL("insta://www.instagram.com")
+              };
+              console.log(" chose happened here !")
+            }}>
+              <Animated.Image style={[{ bottom: this.state.positionBottom }, { margin: 10, width: 100, height: 100 }]} source={require('../assets/images/instaIcon.png')} />
+            </TouchableOpacity>
+
+          </View><View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <TouchableOpacity onPress={() => {
+              if (Platform.OS === 'ios') {
+                Linking.openURL("https://dal-digitalagency.com");
+              }
+              else /* else use Google */ {
+                Linking.openURL("https://dal-digitalagency.com")
+              };
+              console.log(" chose happened here !")
+            }}>
+              <Animated.Image style={[{ bottom: this.state.positionBottom }, { margin: 10, width: 100, height: 100 }]} source={require('../assets/images/webIcon.png')} />
+            </TouchableOpacity>
+
+          </View>
+
         </View>
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <TouchableOpacity onPress={() => {
-            if (Platform.OS === 'ios') {
-              Linking.openURL("maps://www.google.com/maps/place/Carrefour+Ksar+Said/@36.8175313,10.1019402,17z/data=!3m1!4b1!4m5!3m4!1s0x12fd325deeb0cfc3:0x380dc7e055dcc97!8m2!3d36.817527!4d10.1041342");
-            }
-            else /* else use Google */ {
-              Linking.openURL("https://www.google.com/maps/place/Carrefour+Ksar+Said/@36.8175313,10.1019402,17z/data=!3m1!4b1!4m5!3m4!1s0x12fd325deeb0cfc3:0x380dc7e055dcc97!8m2!3d36.817527!4d10.1041342")
-            };
-            console.log(" chose happened here !")
-          }}>
-            <Image style={{ margin: 10, width: 100, height: 100 }} source={require('../assets/images/fbIcon.png')} />
-          </TouchableOpacity>
-
-        </View>
-
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <TouchableOpacity onPress={() => {
-            if (Platform.OS === 'ios') {
-              Linking.openURL("maps://www.google.com/maps/place/Carrefour+Ksar+Said/@36.8175313,10.1019402,17z/data=!3m1!4b1!4m5!3m4!1s0x12fd325deeb0cfc3:0x380dc7e055dcc97!8m2!3d36.817527!4d10.1041342");
-            }
-            else /* else use Google */ {
-              Linking.openURL("https://www.google.com/maps/place/Carrefour+Ksar+Said/@36.8175313,10.1019402,17z/data=!3m1!4b1!4m5!3m4!1s0x12fd325deeb0cfc3:0x380dc7e055dcc97!8m2!3d36.817527!4d10.1041342")
-            };
-            console.log(" chose happened here !")
-          }}>
-            <Image style={{ margin: 10, width: 100, height: 100 }} source={require('../assets/images/instaIcon.png')} />
-          </TouchableOpacity>
-
-        </View><View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <TouchableOpacity onPress={() => {
-            if (Platform.OS === 'ios') {
-              Linking.openURL("maps://www.google.com/maps/place/Carrefour+Ksar+Said/@36.8175313,10.1019402,17z/data=!3m1!4b1!4m5!3m4!1s0x12fd325deeb0cfc3:0x380dc7e055dcc97!8m2!3d36.817527!4d10.1041342");
-            }
-            else /* else use Google */ {
-              Linking.openURL("https://www.google.com/maps/place/Carrefour+Ksar+Said/@36.8175313,10.1019402,17z/data=!3m1!4b1!4m5!3m4!1s0x12fd325deeb0cfc3:0x380dc7e055dcc97!8m2!3d36.817527!4d10.1041342")
-            };
-            console.log(" chose happened here !")
-          }}>
-            <Image style={{ margin: 10, width: 100, height: 100 }} source={require('../assets/images/webIcon.png')} />
-          </TouchableOpacity>
-
-        </View>
-
-      </View>
-    </ScrollView>
-  );
+      </ScrollView>
+    );
+  }
 }
 
 
