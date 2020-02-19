@@ -26,21 +26,41 @@ const SCREEN_HEIGHT = Dimensions.get("window").height;
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const Jobs = [
-  { id: "1", uri: require("../assets/images/cards/webDevIRL.jpg"), name: "Web Dev" },
-  { id: "2", uri: require("../assets/images/cards/Screenshot_2.jpg"), name: "Social Media" },
-  { id: "3", uri: require("../assets/images/cards/graphicDesignerIRL.jpg"), name: "Graphic Desgin" },
-  { id: "4", uri: require("../assets/images/cards/webDevIRL.jpg"), name: "Web Dev" },
-  { id: "5", uri: require("../assets/images/cards/Screenshot_2.jpg"), name: "Social Media" },
-  { id: "6", uri: require("../assets/images/cards/graphicDesignerIRL.jpg"), name: "Graphic Design" },
-  { id: "7", uri: require("../assets/images/cards/webDevIRL.jpg"), name: "Web Dev" },
-  { id: "8", uri: require("../assets/images/cards/Screenshot_2.jpg"), name: "Social Media" },
-  { id: "9", uri: require("../assets/images/cards/graphicDesignerIRL.jpg"), name: "Graphic Design" },
-  { id: "10", uri: require("../assets/images/cards/webDevIRL.jpg"), name: "Web Dev" },
-  { id: "11", uri: require("../assets/images/cards/Screenshot_2.jpg"), name: "Social Media" },
-  { id: "12", uri: require("../assets/images/cards/graphicDesignerIRL.jpg"), name: "Graphic Design" },
-  { id: "13", uri: require("../assets/images/cards/webDevIRL.jpg"), name: "Web Dev" },
-  { id: "14", uri: require("../assets/images/cards/Screenshot_2.jpg"), name: "Social Media" },
-  { id: "15", uri: require("../assets/images/cards/graphicDesignerIRL.jpg"), name: "Graphic Design" },
+  { id: "1", uri: require("../assets/images/cards/planning.jpg"), name: "Planification Stratégique" },
+  { id: "2", uri: require("../assets/images/cards/creationCopy.jpg"), name: "Creation de contenu et copyriting" },
+  { id: "3", uri: require("../assets/images/cards/donnee.jpg"), name: "Données et analytique" },
+  { id: "4", uri: require("../assets/images/cards/socialMedia.jpg"), name: "Gestion des médias sociaux" },
+  { id: "5", uri: require("../assets/images/cards/refSEM.jpg"), name: "Référencement SEM" },
+  { id: "6", uri: require("../assets/images/cards/webDevIRL.jpg"), name: "Developpement Web" },
+  { id: "7", uri: require("../assets/images/cards/graphicDesignerIRL.jpg"), name: "Graphic Design" },
+  { id: "8", uri: require("../assets/images/cards/planning.jpg"), name: "Planification Stratégique" },
+  { id: "9", uri: require("../assets/images/cards/creationCopy.jpg"), name: "Creation de contenu et copyriting" },
+  { id: "10", uri: require("../assets/images/cards/donnee.jpg"), name: "Données et analytique" },
+  { id: "11", uri: require("../assets/images/cards/socialMedia.jpg"), name: "Gestion des médias sociaux" },
+  { id: "12", uri: require("../assets/images/cards/refSEM.jpg"), name: "Référencement SEM" },
+  { id: "13", uri: require("../assets/images/cards/webDevIRL.jpg"), name: "Developpement Web" },
+  { id: "14", uri: require("../assets/images/cards/graphicDesignerIRL.jpg"), name: "Graphic Design" },
+  { id: "15", uri: require("../assets/images/cards/planning.jpg"), name: "Planification Stratégique" },
+  { id: "16", uri: require("../assets/images/cards/creationCopy.jpg"), name: "Creation de contenu et copyriting" },
+  { id: "17", uri: require("../assets/images/cards/donnee.jpg"), name: "Données et analytique" },
+  { id: "18", uri: require("../assets/images/cards/socialMedia.jpg"), name: "Gestion des médias sociaux" },
+  { id: "19", uri: require("../assets/images/cards/refSEM.jpg"), name: "Référencement SEM" },
+  { id: "20", uri: require("../assets/images/cards/webDevIRL.jpg"), name: "Developpement Web" },
+  { id: "21", uri: require("../assets/images/cards/graphicDesignerIRL.jpg"), name: "Graphic Design" },
+  { id: "22", uri: require("../assets/images/cards/planning.jpg"), name: "Planification Stratégique" },
+  { id: "23", uri: require("../assets/images/cards/creationCopy.jpg"), name: "Creation de contenu et copyriting" },
+  { id: "24", uri: require("../assets/images/cards/donnee.jpg"), name: "Données et analytique" },
+  { id: "25", uri: require("../assets/images/cards/socialMedia.jpg"), name: "Gestion des médias sociaux" },
+  { id: "26", uri: require("../assets/images/cards/refSEM.jpg"), name: "Référencement SEM" },
+  { id: "27", uri: require("../assets/images/cards/webDevIRL.jpg"), name: "Developpement Web" },
+  { id: "28", uri: require("../assets/images/cards/graphicDesignerIRL.jpg"), name: "Graphic Design" },
+  { id: "29", uri: require("../assets/images/cards/planning.jpg"), name: "Planification Stratégique" },
+  { id: "30", uri: require("../assets/images/cards/creationCopy.jpg"), name: "Creation de contenu et copyriting" },
+  { id: "31", uri: require("../assets/images/cards/donnee.jpg"), name: "Données et analytique" },
+  { id: "32", uri: require("../assets/images/cards/socialMedia.jpg"), name: "Gestion des médias sociaux" },
+  { id: "33", uri: require("../assets/images/cards/refSEM.jpg"), name: "Référencement SEM" },
+  { id: "34", uri: require("../assets/images/cards/webDevIRL.jpg"), name: "Developpement Web" },
+  { id: "35", uri: require("../assets/images/cards/graphicDesignerIRL.jpg"), name: "Graphic Design" },
 ];
 export default class HomeScreen extends Component {
   constructor() {
@@ -181,7 +201,7 @@ export default class HomeScreen extends Component {
             />
 
             <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center' }}>
-              <Text style={{ color: 'white', fontWeight: 'bold' }} >{item.name}</Text>
+              <Text style={{ color: '#f99e23', fontWeight: 'bold', fontSize: 20 }} >{item.name}</Text>
             </View>
 
           </Animated.View>
@@ -213,7 +233,7 @@ export default class HomeScreen extends Component {
               source={item.uri}
             />
             <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center' }}>
-              <Text style={{ color: 'white', fontWeight: 'bold' }} >{item.name}</Text>
+              <Text style={{ color: '#f99e23', fontWeight: 'bold' }} >{item.name}</Text>
             </View>
           </Animated.View>
 

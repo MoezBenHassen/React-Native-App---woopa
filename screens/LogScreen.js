@@ -8,7 +8,49 @@ import { showLocation } from 'react-native-map-link'
 import LottieView from "lottie-react-native";
 
 const locations = require('../constants/locations.json');
-export default class mapScreen extends Component {
+
+
+const LogStacl = createStackNavigator(
+    {
+        Home: LogScreen,
+
+    }, {
+    headerMode: 'screen',
+    defaultNavigationOptions: {
+        headerTintColor: '#444',
+        headerStyle: {
+            backgroundColor: '#35393e'
+        }
+    }
+},
+    config
+);
+
+LogStacl.navigationOptions = {
+    tabBarLabel: 'Home',
+    tabBarOptions: {
+        activeTintColor: "#f99e23",
+        inactiveTintColor: "#808080",
+        indicatorStyle: {
+            backgroundColor: 'red'
+        },
+        style: { backgroundColor: '#35393e' }
+    },
+    tabBarIcon: ({ focused, tintColor }) => (
+        <TabBarIcon
+            focused={focused}
+            name={
+                Platform.OS === 'ios'
+                    ? `ios-information-circle${focused ? '' : '-outline'}`
+                    : 'md-information-circle'
+            }
+        />
+    )
+};
+
+LogStacl.path = '';
+
+export default class LogScreen extends Component {
 
     constructor(props) {
         super(props)
@@ -28,14 +70,6 @@ export default class mapScreen extends Component {
         return (
 
             <View style={{ backgroundColor: '#2C2F33', flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                    <Text style={{ color: '#ffffff', fontWeight: 'bold', fontSize: 20 }}> Our Location</Text>
-                    <Image
-                        style={[{ bottom: this.state.positionBottom }, styles.image]}
-                        source={require('../assets/images/blackDownArrow.png')}
-                    />
-                </View>
-
                 <TouchableOpacity onPress={() => {
                     if (Platform.OS === 'ios') {
                         Linking.openURL("https://www.google.com/maps/place/Carrefour+Ksar+Said/@36.8175313,10.1019402,17z/data=!3m1!4b1!4m5!3m4!1s0x12fd325deeb0cfc3:0x380dc7e055dcc97!8m2!3d36.817527!4d10.1041342");
@@ -73,11 +107,6 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         paddingTop: 20,
-    },
-    image: {
-        marginTop: 50,
-        width: 50,
-        height: 50,
     },
 });
 
