@@ -44,7 +44,7 @@ export default class LinksScreen extends Component {
               source={require('../assets/images/blackDownArrow.png')}
             />
           </View>
-          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <View style={styles.socials_touchable}>
             <TouchableOpacity onPress={() => {
               if (Platform.OS === 'ios') {
                 Linking.openURL("fb://www.facebook.com");
@@ -59,7 +59,7 @@ export default class LinksScreen extends Component {
 
           </View>
 
-          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <View style={styles.socials_touchable}>
             <TouchableOpacity onPress={() => {
               if (Platform.OS === 'ios') {
                 Linking.openURL("insta://www.instagram.com");
@@ -72,7 +72,7 @@ export default class LinksScreen extends Component {
               <Animated.Image style={[{ bottom: this.state.positionBottom }, { margin: 10, width: 100, height: 100 }]} source={require('../assets/images/instaIcon.png')} />
             </TouchableOpacity>
 
-          </View><View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          </View><View style={styles.socials_touchable}>
             <TouchableOpacity onPress={() => {
               if (Platform.OS === 'ios') {
                 Linking.openURL("https://dal-digitalagency.com");
@@ -112,12 +112,6 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     backgroundColor: '#2c2f33',
   },
-  divider: {
-    width: 1000,
-    height: 1,
-    backgroundColor: '#808080',
-
-  },
   button: {
     width: 30,
     height: 30,
@@ -139,13 +133,6 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
   },
-  link_container: {
-    flex: 1,
-    width: '100%',
-    padding: 5,
-    marginTop: 5,
-    marginBottom: 5,
-  },
   socials_title: {
     flex: 1,
     fontSize: 26,
@@ -153,5 +140,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingBottom: 30,
     color: '#FFFFFF'
+  },
+  socials_touchable: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });

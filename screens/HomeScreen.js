@@ -22,6 +22,7 @@ import Project2 from "../components/Project";
 import Swipe from "../components/Swipe";
 //import { Icon } from "react-native-vector-icons/Icon";
 //import jobs from "../constants/homeData";
+
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
@@ -233,7 +234,7 @@ export default class HomeScreen extends Component {
               source={item.uri}
             />
             <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center' }}>
-              <Text style={{ color: '#f99e23', fontWeight: 'bold' }} >{item.name}</Text>
+              <Text style={{ color: '#f99e23', fontWeight: 'bold', fontSize: 20 }} >{item.name}</Text>
             </View>
           </Animated.View>
 
@@ -289,53 +290,4 @@ const styles = StyleSheet.create({
     color: "white",
 
   },
-  developmentModeText: {
-    marginBottom: 20,
-    color: "rgba(0,0,0,0.4)",
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: "center"
-  },
-  contentContainer: {
-    paddingTop: 30
-  },
-  welcomeContainer: {
-    flex: 1,
-    position: "relative",
-    alignItems: "center",
-    height: 150,
-    marginTop: 30,
-    backgroundColor: "#f99e23",
-    justifyContent: "center",
-    alignItems: "center",
-    elevation: 10
-  },
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: "contain",
-    marginTop: 3,
-    marginLeft: -10
-  },
-  getStartedContainer: {
-    alignItems: "center",
-    marginHorizontal: 50
-  },
-  homeScreenFilename: {
-    marginVertical: 7
-  },
-  codeHighlightText: {
-    color: "rgba(96,100,109, 0.8)"
-  },
-  codeHighlightContainer: {
-    backgroundColor: "rgba(0,0,0,0.05)",
-    borderRadius: 3,
-    paddingHorizontal: 4
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: "rgba(96,100,109, 1)",
-    lineHeight: 24,
-    textAlign: "center"
-  }
 });

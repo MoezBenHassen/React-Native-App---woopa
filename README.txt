@@ -1,6 +1,6 @@
-Libraries installed 
- "@mapbox/polyline": "^1.1.0",
-"@react-native-community/viewpager"
+Libraries installed:
+    "@mapbox/polyline"
+    "@react-native-community/viewpager"
     "@react-navigation/material-bottom-tabs"
     "@react-navigation/web"
     "lottie-react-native"
@@ -23,3 +23,8 @@ Libraries installed
     "react-navigation-tabs"
     "react-navigation-transitions"
     "styled-components"
+
+Color Palet.html Contains colors used
+
+Start in production mode : 
+    expo start --no-dev --minify

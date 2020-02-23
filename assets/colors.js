@@ -3,12 +3,7 @@
 #99AAB5
 #FFFFFF
 #7289DA
-
 #497AFC
-
-
 #f99e23
-
-#ffc0cb => pink,
-
-#808080 => gray
+#ffc0cb => react - native pink,
+#808080 => react - native gray,
